@@ -53,16 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 service.execute("action");
             }
         });
-
-        Button buttonDelete = (Button)findViewById(R.id.tombolDelete);
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText txtUsername=(EditText) findViewById(R.id.inputNip);
-                AsyncTask service = new ServicesDeleteByNip(txtUsername.getText().toString(), getApplicationContext());
-                service.execute("action");
-            }
-        });
     }
 
     public void tampilData(String nip, String nama){
@@ -75,23 +65,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void tampilDataObjectJSON(JSONObject data){
         try {
-        String id_pns=data.getString("id");
+        String nip=data.getString("nipBaru");
         String nama=data.getString("nama");
-        String nipBaru=data.getString("nipBaru");
-        String tmtPns=data.getString("tmtPns");
-        String tmtGolongan=data.getString("tmtGolongan");
-        String jenisKelamin=data.getString("jenisKelamin");
 
-        String alamat=data.getString("alamat");
+        JSONObject instansi=data.getJSONObject("instansi");
+        String instansiStr=instansi.getString("nama");
+        String jabatan=instansi.getString("namaJabatan");
+        String jk=data.getString("jenisKelamin");
+        String jenisKelamin;
+        if (jk.equalsIgnoreCase("M")){
+            jenisKelamin="Laki-Laki";
+        }else{
+            jenisKelamin="Perempuan";
+        }
 
-
+        //tes
         EditText terimaNip= (EditText) findViewById(R.id.showNip);
-        terimaNip.setText(nipBaru,EditText.BufferType.NORMAL);
+        terimaNip.setText(nip,EditText.BufferType.NORMAL);
 
         EditText terimaNama=(EditText)findViewById(R.id.showNama);
         terimaNama.setText(nama,EditText.BufferType.NORMAL);
 
+        EditText terimaInstansi= (EditText) findViewById(R.id.showInstansi);
+        terimaInstansi.setText(instansiStr,EditText.BufferType.NORMAL);
 
+<<<<<<< HEAD
+        EditText terimaNamaJabatan= (EditText) findViewById(R.id.showNamaJabatan);
+        terimaNamaJabatan.setText(jabatan,EditText.BufferType.NORMAL);
+=======
             Log.d("jsom_key",data.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -112,12 +113,12 @@ public class MainActivity extends AppCompatActivity {
 
             EditText terimaGolongan= (EditText) findViewById(R.id.showGolongan);
             terimaGolongan.setText(nama,EditText.BufferType.NORMAL);
+>>>>>>> origin/master
 
-            EditText terimaPangkat=(EditText)findViewById(R.id.showPangkat);
-            terimaPangkat.setText(pangkat,EditText.BufferType.NORMAL);
+        EditText terimajenisKelamin= (EditText) findViewById(R.id.showjenisKelamin);
+            terimajenisKelamin.setText(jenisKelamin,EditText.BufferType.NORMAL);
 
-
-            Log.d("jsom_key",gol.toString());
+            Log.d("jsom_key",data.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }

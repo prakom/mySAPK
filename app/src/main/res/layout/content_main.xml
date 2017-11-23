@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Masukkan NIP Anda"
             android:inputType="textPersonName"
             android:text=""
             tools:layout_editor_absoluteX="0dp"
@@ -38,38 +39,83 @@
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="243dp" />
 
+
         <EditText
             android:id="@+id/showNip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:hint="NIP Baru"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/showNama"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="" />
+            android:hint="Nama"
+            android:inputType="textPersonName" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <EditText
-            android:id="@+id/showGolongan"
+            android:id="@+id/showInstansi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Instansi"
             android:inputType="textPersonName"
             android:text="" />
 
         <EditText
-            android:id="@+id/showPangkat"
+            android:id="@+id/showNamaJabatan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Nama Jabatan"
             android:inputType="textPersonName"
             android:text="" />
+            android:text=""
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <EditText
+            android:id="@+id/showjenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Jenis Kelamin"
+            android:inputType="textPersonName"
+            android:text="" />
+            android:text=""
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
     </LinearLayout>
 
 
