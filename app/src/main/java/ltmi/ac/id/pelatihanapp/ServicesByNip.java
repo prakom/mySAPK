@@ -45,7 +45,8 @@ public class ServicesByNip extends AsyncTask<Object, Integer, String> {
             String nip=data.getString("id");
             String nama=data.getString("nama");
 
-            mainActivity.tampilData(nip,nama);
+            //mainActivity.tampilData(nip,nama);
+            mainActivity.tampilDataObjectJSON(data);
 
             Log.d("jsom_key",jobj.toString());
         } catch (JSONException e) {
