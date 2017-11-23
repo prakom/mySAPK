@@ -31,6 +31,14 @@
             android:text="CARI"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="243dp" />
+        <Button
+            android:id="@+id/tombolDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DELETE"
+            tools:layout_editor_absoluteX="143dp"
+            tools:layout_editor_absoluteY="243dp" />
+
 
         <EditText
             android:id="@+id/showNip"
@@ -48,6 +56,34 @@
             android:hint="Nama"
             android:inputType="textPersonName" />
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         <EditText
             android:id="@+id/showInstansi"
             android:layout_width="match_parent"

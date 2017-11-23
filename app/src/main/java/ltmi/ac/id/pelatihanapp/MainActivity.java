@@ -89,8 +89,31 @@ public class MainActivity extends AppCompatActivity {
         EditText terimaInstansi= (EditText) findViewById(R.id.showInstansi);
         terimaInstansi.setText(instansiStr,EditText.BufferType.NORMAL);
 
+<<<<<<< HEAD
         EditText terimaNamaJabatan= (EditText) findViewById(R.id.showNamaJabatan);
         terimaNamaJabatan.setText(jabatan,EditText.BufferType.NORMAL);
+=======
+            Log.d("jsom_key",data.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void tampilGolonganObjectJSON(JSONObject gol){
+        //tampil by golongan
+        try {
+            String nama=gol.getString("nama");
+            String pangkat=gol.getString("namaPangkat");
+            //String nipBaru=data.getString("nipBaru");
+            //String tmtPns=data.getString("tmtPns");
+            //String tmtGolongan=data.getString("tmtGolongan");
+            //String jenisKelamin=data.getString("jenisKelamin");
+            //String alamat=data.getString("alamat");
+
+
+            EditText terimaGolongan= (EditText) findViewById(R.id.showGolongan);
+            terimaGolongan.setText(nama,EditText.BufferType.NORMAL);
+>>>>>>> origin/master
 
         EditText terimajenisKelamin= (EditText) findViewById(R.id.showjenisKelamin);
             terimajenisKelamin.setText(jenisKelamin,EditText.BufferType.NORMAL);
