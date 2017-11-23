@@ -71,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
         JSONObject instansi=data.getJSONObject("instansi");
         String instansiStr=instansi.getString("nama");
         String jabatan=instansi.getString("namaJabatan");
+        String jk=data.getString("jenisKelamin");
+        String jenisKelamin;
+        if (jk.equalsIgnoreCase("M")){
+            jenisKelamin="Laki-Laki";
+        }else{
+            jenisKelamin="Perempuan";
+        }
 
         EditText terimaNip= (EditText) findViewById(R.id.showNip);
         terimaNip.setText(nip,EditText.BufferType.NORMAL);
@@ -83,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
         EditText terimaNamaJabatan= (EditText) findViewById(R.id.showNamaJabatan);
         terimaNamaJabatan.setText(jabatan,EditText.BufferType.NORMAL);
+
+        EditText terimajenisKelamin= (EditText) findViewById(R.id.showjenisKelamin);
+            terimajenisKelamin.setText(jenisKelamin,EditText.BufferType.NORMAL);
 
             Log.d("jsom_key",data.toString());
         } catch (JSONException e) {
