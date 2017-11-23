@@ -39,6 +39,7 @@ public class ServicesByNip extends AsyncTask<Object, Integer, String> {
             JSONTokener tokener = new JSONTokener(result);
             JSONObject jobj= (JSONObject)tokener.nextValue();
             JSONObject data=jobj.getJSONObject("data");
+            JSONObject gol=data.getJSONObject("golongan");
             //JSONObject instansi=data.getJSONObject("instansi");
            // String nama = instansi.getString("nama");
             //Toast.makeText(this.context, nama, Toast.LENGTH_LONG).show();
@@ -47,6 +48,7 @@ public class ServicesByNip extends AsyncTask<Object, Integer, String> {
 
             //mainActivity.tampilData(nip,nama);
             mainActivity.tampilDataObjectJSON(data);
+            mainActivity.tampilGolonganObjectJSON(gol);
 
             Log.d("jsom_key",jobj.toString());
         } catch (JSONException e) {

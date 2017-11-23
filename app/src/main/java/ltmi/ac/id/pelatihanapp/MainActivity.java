@@ -75,15 +75,48 @@ public class MainActivity extends AppCompatActivity {
 
     public void tampilDataObjectJSON(JSONObject data){
         try {
-        String nip=data.getString("id");
+        String id_pns=data.getString("id");
         String nama=data.getString("nama");
+        String nipBaru=data.getString("nipBaru");
+        String tmtPns=data.getString("tmtPns");
+        String tmtGolongan=data.getString("tmtGolongan");
+        String jenisKelamin=data.getString("jenisKelamin");
+
+        String alamat=data.getString("alamat");
+
 
         EditText terimaNip= (EditText) findViewById(R.id.showNip);
-        terimaNip.setText(nip,EditText.BufferType.NORMAL);
+        terimaNip.setText(nipBaru,EditText.BufferType.NORMAL);
 
         EditText terimaNama=(EditText)findViewById(R.id.showNama);
         terimaNama.setText(nama,EditText.BufferType.NORMAL);
+
+
             Log.d("jsom_key",data.toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void tampilGolonganObjectJSON(JSONObject gol){
+        try {
+            String nama=gol.getString("nama");
+            String pangkat=gol.getString("namaPangkat");
+            //String nipBaru=data.getString("nipBaru");
+            //String tmtPns=data.getString("tmtPns");
+            //String tmtGolongan=data.getString("tmtGolongan");
+            //String jenisKelamin=data.getString("jenisKelamin");
+            //String alamat=data.getString("alamat");
+
+
+            EditText terimaGolongan= (EditText) findViewById(R.id.showGolongan);
+            terimaGolongan.setText(nama,EditText.BufferType.NORMAL);
+
+            EditText terimaPangkat=(EditText)findViewById(R.id.showPangkat);
+            terimaPangkat.setText(pangkat,EditText.BufferType.NORMAL);
+
+
+            Log.d("jsom_key",gol.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
