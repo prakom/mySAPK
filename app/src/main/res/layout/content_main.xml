@@ -34,7 +34,7 @@
             android:id="@+id/tombolDelete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SHOW"
+            android:text="DELETE"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="243dp" />
 
