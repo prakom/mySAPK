@@ -5,7 +5,9 @@ import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.conn.ClientConnectionManager;
@@ -17,6 +19,7 @@ import org.apache.http.conn.ssl.X509HostnameVerifier;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.impl.conn.SingleClientConnManager;
 import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
@@ -29,6 +32,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.KeyStore;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -181,7 +186,42 @@ public class NetworkHelper {
         return ret;
     }
 
+    String getServiceSslSaveByNip(String nip){
+        String urls = "https://wstraining.bkn.go.id/bkn-resources-server/api/training/pns/deletes/nip/"+nip;
+        Log.d("urlbynip",urls);
+        String ret="";
+        HttpClient httpClient = getNewHttpClient();
+        final String url = urls;
+        String stringJSON;
+        BufferedReader reader = null;
+        /*HttpGet httpGet = new HttpGet(url);
+        httpGet.setHeader("origin","http://localhost:20000");*/
 
+        try {
+            HttpPost httpPost = new HttpPost(url);
+            List<NameValuePair> postParams = new ArrayList<NameValuePair>();
+            postParams.add(new BasicNameValuePair("json", "test"));
+            UrlEncodedFormEntity entity = new UrlEncodedFormEntity(postParams);
+            httpPost.setEntity(entity);
+            HttpResponse response = httpClient.execute(httpPost);
+            InputStream is = response.getEntity().getContent();
+            StringBuffer sb = new StringBuffer();
+            reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while((line = reader.readLine())!=null){
+                sb.append(line+"\n");
+            }
+            if(sb.length()==0){
+                return null;
+            }
+            stringJSON = sb.toString();
+            ret = stringJSON;
+            Log.d("retJSON",stringJSON);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
     public HttpClient getNewHttpClient() {
         try {
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
