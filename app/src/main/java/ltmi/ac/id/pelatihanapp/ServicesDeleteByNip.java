@@ -33,10 +33,15 @@ public class ServicesDeleteByNip extends AsyncTask<Object, Integer, String> {
             Log.d("reult",result);
             JSONTokener tokener = new JSONTokener(result);
             JSONObject jobj= (JSONObject)tokener.nextValue();
-            JSONObject data=jobj.getJSONObject("data");
-            JSONObject instansi=data.getJSONObject("instansi");
-            String nama = instansi.getString("nama");
-            Toast.makeText(this.context, nama, Toast.LENGTH_LONG).show();
+            //JSONObject data=jobj.getJSONObject("data");
+//            JSONObject instansi=data.getJSONObject("instansi");
+           // String keterangan = jobj.getString("code");
+           // if(keterangan=="1"){
+                Toast.makeText(this.context, "Data berhasil dihapus", Toast.LENGTH_LONG).show();
+           // }else{
+            //    Toast.makeText(this.context, "Data gagal dihapus", Toast.LENGTH_LONG).show();
+            //}
+
             Log.d("jsom_key",jobj.toString());
         } catch (JSONException e) {
             e.printStackTrace();
