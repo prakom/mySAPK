@@ -12,9 +12,10 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
-    AppCompatActivity ini=null;
+    MainActivity ini=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
         Button button = (Button)findViewById(R.id.tombol);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,12 +44,20 @@ public class MainActivity extends AppCompatActivity {
                 //AsyncTask service = new Services(getApplicationContext());
 
                 //AsyncTask service = new ServicesByNip(editText.getText().toString());
-                AsyncTask service = new ServicesByNip("197906212006041004", getApplicationContext());
+                EditText txtUsername=(EditText) findViewById(R.id.inputNip);
+                AsyncTask service = new ServicesByNip(txtUsername.getText().toString(), getApplicationContext(),ini);
                 service.execute("action");
             }
         });
     }
 
+    public void tampilData(String nip, String nama){
+        EditText terimaNip= (EditText) findViewById(R.id.showNip);
+        terimaNip.setText(nip,EditText.BufferType.NORMAL);
+
+        EditText terimaNama=(EditText)findViewById(R.id.showNama);
+        terimaNama.setText(nama,EditText.BufferType.NORMAL);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
