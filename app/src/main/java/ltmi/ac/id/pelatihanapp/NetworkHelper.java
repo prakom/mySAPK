@@ -148,6 +148,40 @@ public class NetworkHelper {
         return ret;
     }
 
+    String getServiceSslDeleteByNip(String nip){
+        String urls = "https://wstraining.bkn.go.id/bkn-resources-server/api/training/pns/deletes/nip/"+nip;
+        Log.d("urlbynip",urls);
+        String ret="";
+        HttpClient httpClient = getNewHttpClient();
+        final String url = urls;
+        String stringJSON;
+        BufferedReader reader = null;
+        HttpGet httpGet = new HttpGet(url);
+        httpGet.setHeader("origin","http://localhost:20000");
+
+        try {
+
+            HttpResponse response = httpClient.execute(httpGet);
+            InputStream is = response.getEntity().getContent();
+            StringBuffer sb = new StringBuffer();
+            reader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while((line = reader.readLine())!=null){
+                sb.append(line+"\n");
+            }
+            if(sb.length()==0){
+                return null;
+            }
+            stringJSON = sb.toString();
+            ret = stringJSON;
+            Log.d("retJSON",stringJSON);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return ret;
+    }
+
+
     public HttpClient getNewHttpClient() {
         try {
             KeyStore trustStore = KeyStore.getInstance(KeyStore.getDefaultType());
