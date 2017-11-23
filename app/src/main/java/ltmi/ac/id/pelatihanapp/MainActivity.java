@@ -53,6 +53,16 @@ public class MainActivity extends AppCompatActivity {
                 service.execute("action");
             }
         });
+
+        Button buttonDelete = (Button)findViewById(R.id.tombolDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText txtUsername=(EditText) findViewById(R.id.inputNip);
+                AsyncTask service = new ServicesDeleteByNip(txtUsername.getText().toString(), getApplicationContext());
+                service.execute("action");
+            }
+        });
     }
 
     public void tampilData(String nip, String nama){
