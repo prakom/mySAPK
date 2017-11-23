@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tampilGolonganObjectJSON(JSONObject gol){
+        //tampil by golongan
         try {
             String nama=gol.getString("nama");
             String pangkat=gol.getString("namaPangkat");
