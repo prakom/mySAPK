@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             jenisKelamin="Perempuan";
         }
 
+        //tes
         EditText terimaNip= (EditText) findViewById(R.id.showNip);
         terimaNip.setText(nip,EditText.BufferType.NORMAL);
 
