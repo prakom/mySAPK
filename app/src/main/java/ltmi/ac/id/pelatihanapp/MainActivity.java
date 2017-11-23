@@ -65,14 +65,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void tampilDataObjectJSON(JSONObject data){
         try {
-        String nip=data.getString("id");
+        String nip=data.getString("nipBaru");
         String nama=data.getString("nama");
+
+        JSONObject instansi=data.getJSONObject("instansi");
+        String instansiStr=instansi.getString("nama");
+        String jabatan=instansi.getString("namaJabatan");
 
         EditText terimaNip= (EditText) findViewById(R.id.showNip);
         terimaNip.setText(nip,EditText.BufferType.NORMAL);
 
         EditText terimaNama=(EditText)findViewById(R.id.showNama);
         terimaNama.setText(nama,EditText.BufferType.NORMAL);
+
+        EditText terimaInstansi= (EditText) findViewById(R.id.showInstansi);
+        terimaInstansi.setText(instansiStr,EditText.BufferType.NORMAL);
+
+        EditText terimaNamaJabatan= (EditText) findViewById(R.id.showNamaJabatan);
+        terimaNamaJabatan.setText(jabatan,EditText.BufferType.NORMAL);
+
             Log.d("jsom_key",data.toString());
         } catch (JSONException e) {
             e.printStackTrace();
